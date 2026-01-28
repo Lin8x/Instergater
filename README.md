@@ -1,9 +1,9 @@
 # Instergater
 
-> .
+> </br>
 > **Warning: Contains "AI-Slop"**  
 > This software was architected by algorithms and merely reviewed by a human. It serves as a digital barrier against the very forces that created it.
-> .
+> </br>
 
 </br></br>
 <p align="center" width="100%">
