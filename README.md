@@ -1,7 +1,7 @@
 # Instergater
 
 > </br>
-> **Warning: Contains "AI-Slop"**  
+> Warning: Contains "AI-Slop" </br></br>  
 > This software was architected by algorithms and merely reviewed by a human. It serves as a digital barrier against the very forces that created it.
 > </br></br>
 
@@ -16,7 +16,19 @@
 
 </br>
 
-## Disclaimer & Liability
+<div align="center">
+
+![Version](https://img.shields.io/badge/version-1.0-blue.svg?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-active-success.svg?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/:lin8x/:instergater?style=for-the-badge)
+![License](https://img.shields.io/github/license/:lin8x/:instergater?style=for-the-badge)
+![Made with JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-yellow?style=for-the-badge&logo=javascript)
+
+</div>
+
+</br>
+
+## ⚠️ Disclaimer & Liability
 **READ CAREFULLY**:
 This software is provided "as is", without warranty of any kind.
 *   **TOS Violation**: Using this extension likely violates Instagram's Terms of Service regarding automated data collection or interface modification.
@@ -25,44 +37,7 @@ This software is provided "as is", without warranty of any kind.
 
 </br>
 
-## Installation
-
-### Option 1: Official Store (Recommended)
-| Browser | Link |
-| ------- | ---- |
-| **Chrome** | [Download from Chrome Web Store](#) *(Coming Soon)* |
-| **Edge** | [Download from Edge Add-ons](#) *(Coming Soon)* |
-| **Firefox** | [Download from Firefox Add-ons](#) *(Coming Soon)* |
-
-</br>
-
-### Option 2: Manual Installation (Developer Mode)
-If the store version is unavailable or you want to inspect/modify the code:
-
-**Step 1: Get the Code**  
-Go to the [**Latest Release**](https://github.com/YOUR_USERNAME/Instergater/releases) page. Download the "Source code (zip)" and extract it to a folder on your computer.
-
-**Step 2: Open Extensions Management**  
-Open Chrome and navigate to `chrome://extensions` (or click the puzzle piece icon > Manage Extensions).
-
-![Extensions Menu](assets/install_step_1.png)
-
-**Step 3: Enable Developer Mode**  
-Toggle the "Developer mode" switch in the top right corner of the page.
-
-![Developer Mode Toggle](assets/install_step_2.png)
-
-**Step 4: Load Unpacked**  
-Click the "Load unpacked" button that appears in the top left.
-
-![Load Unpacked Button](assets/install_step_3.png)
-
-**Step 5: Select Folder**  
-Select the folder where you extracted the files. The extension should now be active.
-
-</br>
-
-## The Philosophy of the Gate
+## 🧠 The Philosophy of the Gate
 
 I built Instergater because modern social media is not merely a tool but rather an environment designed to strip you of your autonomy. The algorithmic feeds we consume are inherently immoral because they systematically violate the conditions necessary for a flourishing human life:
 
@@ -76,23 +51,90 @@ This extension is a nihilistic attempt to use code to break the code. It is a "g
 
 </br>
 
-## Features
+## ✨ Features
 
-*   **Breathing Room**: Enforces a deep breath (delay) before entering the feed.
-*   **Scroll Limits**: Hard locks the feed after a set number of posts.
-*   **Validation Removal**: Hides likes, shares, and comments to re-center your internal locus of evaluation.
-*   **Data Sovereignty**: Download media to own it, rather than just consuming it.
+- **Breathing Room**  
+  *Enforces a deep breath (delay) before entering the feed.*
+
+- **Scroll Limits**  
+  *Hard locks the feed after a set number of posts.*
+
+- **Validation Removal**  
+  *Hides likes, shares, and comments to re-center your internal locus of evaluation.*
+
+- **Data Sovereignty**  
+  *Download media to own it, rather than just consuming it.*
 
 </br>
 
-## Open Source & Transparency
+## 🔍 Open Source & Transparency
 This project is fully open source. The code is unminified and available for you to inspect.
 - **Privacy**: No external analytics. No data harvesting.
 - **Safety**: Designed to be non-malicious. You are encouraged to read the source code (`content.js`, `background.js`) yourself to verify. *(This should be standard practice before installing anything!)*
 
 </br>
 
-## Governance
+## 🚀 Installation
+
+### Option 1: Official Store (Recommended)
+| Browser | Link |
+| :--- | :--- |
+| **🟢 Chrome** | [Download from Chrome Web Store](#) *(Coming Soon)* |
+| **🔵 Edge** | [Download from Edge Add-ons](#) *(Coming Soon)* |
+| **🦊 Firefox** | [Download from Firefox Add-ons](#) *(Coming Soon)* |
+
+</br>
+
+### Option 2: Manual Installation (Developer Mode)
+If the store version is unavailable or you want to inspect/modify the code:
+
+**Step 1: Get the Code**  
+Go to the [**Latest Release**](https://github.com/Lin8x/Instergater/releases) page. Download the "Source code (zip)" and extract it to a folder on your computer.
+
+**Step 2: Open Extensions Management**  
+Open Chrome and navigate to `chrome://extensions` (or click the puzzle piece icon > Manage Extensions).
+
+![Extensions Menu](assets/installation/instagater-installation-1.png)
+
+<img src=assets/installation/instagater-installation-2.png width=50% alt="Extensions Menu #2"> </br>
+
+**Step 3: Enable Developer Mode**  
+Toggle the "Developer mode" switch in the top right corner of the page.
+
+![Developer Mode Toggle](assets/installation/instagater-installation-3.png)
+
+**Step 4: Load Unpacked**  
+Click the "Load unpacked" button that appears in the top left.
+
+![Load Unpacked Button](assets/installation/instagater-installation-4.png)
+
+**Step 5: Select Folder**  
+Select the folder where you extracted the files. The extension should now be active.
+
+
+</br>
+
+## ❓ FAQ
+
+**Will this be actively maintained?**  
+Not necessarily. This project was built for my personal need to reduce Instagram usage. Unless a community forms around it to contribute fixes and features, updates might be sporadic.
+
+**Why did you build this?**  
+I wanted to get off Instagram but couldn't find a reliable, open-source tool that actually worked. This was built out of love (and necessity) to reclaim my attention span.
+
+**How can I support the project?**  
+If you find this useful, please **give this repository a Star ⭐**. It helps with visibility and supports my career as a developer.
+
+**Why no mobile app?**  
+The Instagram app is designed for maximum data collection and accessibility, making it higher risk for those trying to quit. A browser extension minimizes this footprint.
+*   *Android Users*: You can actually use this on mobile by using a browser that supports extensions, such as **Kiwi Browser** or **Firefox**.
+
+**I found a bug or have a suggestion, what now?**  
+Check the [**Issues**](../../issues) tab to see if it's already been reported. If not, please open a new issue describing the problem. Standard GitHub etiquette applies!
+
+</br>
+
+## ⚖️ Governance
 *   [CONTRIBUTING](./CONTRIBUTING.md)
 *   [SECURITY](./SECURITY.md)
 *   [LICENSE](./LICENSE.md)
