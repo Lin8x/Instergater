@@ -1,14 +1,32 @@
 # Distribution & Installation Guide
 
-## 1. Unpacked (Current Method)
-This is the standard way to run local extensions.
+## Cross-Browser Support
+Instergater supports both **Chrome/Chromium** (Manifest V3) and **Firefox** (Manifest V2).
+
+### Quick Build
+Run the build script to create platform-specific packages:
+```bash
+./build.sh
+```
+This creates:
+- `build/instergater-chrome.zip` - For Chrome Web Store / Edge Add-ons
+- `build/instergater-firefox.zip` - For Firefox Add-ons
+
+## 1. Unpacked (Development)
+
+### Chrome/Chromium
 1. Go to `chrome://extensions`
-2. Enable **Developer Mode**.
-3. Click **Load Unpacked**.
-4. Select this project folder.
+2. Enable **Developer Mode**
+3. Click **Load Unpacked**
+4. Select the project folder (or `build/chrome` after running build.sh)
+
+### Firefox
+1. Go to `about:debugging#/runtime/this-firefox`
+2. Click **Load Temporary Add-on**
+3. Select `build/firefox/manifest.json` (or rename `manifest.firefox.json` → `manifest.json` in project root)
 
 **Pros:** Free, easy updates (just edit code and reload).
-**Cons:** Chrome may prompt "Disable developer mode extensions" on startup.
+**Cons:** Chrome may prompt "Disable developer mode extensions" on startup. Firefox temporary add-ons don't persist across restarts.
 
 ## 2. Packed Extension (.crx)
 This creates a single installable file, but modern Chrome is strict about these.
@@ -30,11 +48,17 @@ This creates a single installable file, but modern Chrome is strict about these.
 
 **Warning:** Modern versions of Chrome (Windows/Mac) **block** identifying packed extensions that do not come from the Web Store. If you install a `.crx` locally, Chrome may disable it automatically after you restart the browser for security reasons.
 
-## 3. Chrome Web Store (Recommended for Sharing)
-If you want to share this with friends or use it without "Developer Mode":
+## 3. Browser Extension Stores (Recommended for Sharing)
+
+### Chrome Web Store
 1. Create a developer account at the [Chrome Web Store Dashboard](https://chrome.google.com/webstore/dev/dashboard) ($5 fee).
-2. Zip your project folder (excluding `.git`, `node_modules`, `.vscode`, `.editorconfig`, `jsconfig.json`, `.pem`, etc).
+2. Use `build/instergater-chrome.zip` or zip the project folder (excluding `.git`, `node_modules`, `.vscode`, `build/`, `manifest.firefox.json`, `.editorconfig`, `jsconfig.json`, `.pem`, etc).
 3. Upload the Zip.
 4. Publish (Public, Unlisted, or Private).
+
+### Firefox Add-ons (AMO)
+1. Create a developer account at [Firefox Add-on Developer Hub](https://addons.mozilla.org/developers/).
+2. Use `build/instergater-firefox.zip`.
+3. Upload and submit for review.
 
 **Pros:** Permanent installation, automatic updates for users, no security warnings.

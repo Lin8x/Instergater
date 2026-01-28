@@ -19,7 +19,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.1-blue.svg?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.2-blue.svg?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-hiatus-orange.svg?style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/Lin8x/Instergater?style=for-the-badge)
 ![Contributors](https://img.shields.io/github/contributors/Lin8x/Instergater?style=for-the-badge)
@@ -120,6 +120,13 @@ Click the "Load unpacked" button that appears in the top left.
 
 **Step 5: Select Folder**  
 Select the folder where you extracted the files. The extension should now be active.
+
+**Firefox specific steps**  
+1. Run `./build.sh` to create platform-specific builds (or manually: duplicate the folder and rename `manifest.firefox.json` to `manifest.json`).  
+2. Open `about:debugging#/runtime/this-firefox`.  
+3. Click **Load Temporary Add-on**, browse to `build/firefox/` and select `manifest.json`.
+
+> **Note:** Firefox temporary add-ons are removed when Firefox closes. For permanent installation, install from the Firefox Add-ons store once available.
 
 
 </br>

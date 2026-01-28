@@ -1,22 +1,27 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Instergater (A Instagram Limiter)",
   "version": "1.2",
   "description": "Your Gate-Keeping Instagram Extension",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "instergater@lin8x.dev",
+      "strict_min_version": "109.0"
+    }
+  },
   "permissions": [
     "storage",
     "downloads",
-    "tabs"
-  ],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "host_permissions": [
+    "tabs",
     "*://www.instagram.com/*",
     "*://*.cdninstagram.com/*",
     "*://*.fbcdn.net/*"
   ],
-  "action": {
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
     "default_popup": "popup.html",
     "default_icon": "assets/logo.png"
   },
@@ -29,9 +34,7 @@
     }
   ],
   "web_accessible_resources": [
-    {
-      "resources": ["inject.js", "browser-polyfill.js"],
-      "matches": ["*://www.instagram.com/*"]
-    }
+    "inject.js",
+    "browser-polyfill.js"
   ]
 }
