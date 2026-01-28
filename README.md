@@ -15,10 +15,6 @@
 </br>(Not affiliated with, endorsed by, or sponsored by Instagram or Meta)
 </p>
 
-<p align="center" width="100%">
- <img width="70%" src="assets/installation/instergater-screenshot.png"> 
-</p>
-
 </br>
 
 <div align="center">
@@ -31,6 +27,12 @@
 
 
 </div>
+
+</br>
+
+<p align="center" width="100%">
+ <img width="70%" src="assets/installation/instergater-screenshot.png"> 
+</p>
 
 </br>
 
