@@ -64,6 +64,9 @@ This extension is a nihilistic attempt to use code to break the code. It is a "g
 - **Validation Removal**  
   *Hides likes, shares, and comments to re-center your internal locus of evaluation.*
 
+- **Navigation Removal**
+  Hides search, messages, notificaitons, and more navigation button to prevent diving further into addiction.
+
 - **Data Sovereignty**  
   *Download media to own it, rather than just consuming it.*
 
@@ -148,4 +151,5 @@ Check the [**Issues**](../../issues) tab to see if it's already been reported. I
 
 
 </br>
+
 
