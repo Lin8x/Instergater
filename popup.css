@@ -1,0 +1,134 @@
+body {
+  width: 300px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 15px;
+  background-color: #f8f9fa;
+}
+
+h2 {
+  text-align: center;
+  color: #c13584;
+  margin-top: 0;
+}
+
+.section {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #555;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 4px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #c13584;
+}
+
+input[type="number"], input[type="text"] {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+small {
+  display: block;
+  color: #888;
+  font-size: 0.75em;
+  margin-top: 2px;
+}
+
+button#save {
+  width: 100%;
+  padding: 10px;
+  background-color: #c13584;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+button#save:hover {
+  background-color: #a0286b;
+}
+
+.status {
+  text-align: center;
+  color: green;
+  font-size: 0.8em;
+  height: 1.2em;
+  margin-top: 5px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.tab {
+  padding: 8px 15px;
+  cursor: pointer;
+  color: #666;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+}
+.tab:hover {
+  color: #c13584;
+}
+.tab.active {
+  color: #c13584;
+  border-bottom: 2px solid #c13584;
+}
+
+.tab-content {
+  display: none !important;
+}
+.tab-content.active {
+  display: block !important;
+}
+
+.selector-group {
+    margin-bottom: 10px;
+}
+.selector-label {
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+    display: block;
+}
+textarea {
+    width: 100%;
+    height: 40px;
+    font-family: monospace;
+    font-size: 11px;
+    border: 1px solid #ddd;
+    resize: vertical;
+}
+.selector-note {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 10px;
+    font-style: italic;
+}

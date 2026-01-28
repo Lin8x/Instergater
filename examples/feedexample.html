@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="_9dls _ar44" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Instagram Feed Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Example Instagram feed page for ZenBlocker extension testing">
+    <style>
+        /* Basic Instagram-like styling for testing */
+        :root {
+            --ig-primary-background: 255, 255, 255;
+            --ig-primary-text: 38, 38, 38;
+            --ig-secondary-text: 142, 142, 142;
+            --ig-separator: 219, 219, 219;
+            --ig-highlight-background: 250, 250, 250;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 20px; background: #fafafa; }
+        .feed-container { max-width: 470px; margin: 0 auto; }
+        .post { background: white; border: 1px solid #dbdbdb; border-radius: 3px; margin-bottom: 24px; }
+        .post-header { display: flex; align-items: center; padding: 14px 16px; }
+        .avatar { width: 32px; height: 32px; border-radius: 50%; background: #dbdbdb; margin-right: 12px; }
+        .username { font-weight: 600; font-size: 14px; color: #262626; }
+        .post-image { width: 100%; aspect-ratio: 1; background: #efefef; display: flex; align-items: center; justify-content: center; color: #8e8e8e; }
+        .post-actions { padding: 8px 16px; display: flex; gap: 16px; }
+        .action-btn { background: none; border: none; cursor: pointer; padding: 8px 0; }
+        .post-likes { padding: 0 16px; font-weight: 600; font-size: 14px; }
+        .post-caption { padding: 8px 16px; font-size: 14px; }
+        .post-caption .username { margin-right: 4px; }
+        .post-time { padding: 8px 16px; font-size: 10px; color: #8e8e8e; text-transform: uppercase; }
+        .story-tray { display: flex; gap: 16px; padding: 16px; background: white; border: 1px solid #dbdbdb; border-radius: 3px; margin-bottom: 24px; overflow-x: auto; }
+        .story-item { display: flex; flex-direction: column; align-items: center; min-width: 66px; }
+        .story-ring { width: 66px; height: 66px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); padding: 2px; }
+        .story-avatar { width: 100%; height: 100%; border-radius: 50%; background: white; padding: 2px; box-sizing: border-box; }
+        .story-avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: #dbdbdb; }
+        .story-username { font-size: 12px; margin-top: 4px; max-width: 74px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .carousel { position: relative; }
+        .carousel-dots { display: flex; justify-content: center; gap: 4px; padding: 8px; }
+        .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: #a8a8a8; }
+        .carousel-dot.active { background: #0095f6; }
+        .video-indicator { position: absolute; top: 12px; right: 12px; }
+        .video-indicator svg { width: 24px; height: 24px; fill: white; filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); }
+        .comments-section { padding: 8px 16px; }
+        .comment { margin: 4px 0; font-size: 14px; }
+        .comment .username { font-weight: 600; margin-right: 4px; }
+    </style>
+</head>
+<body>
+    <div class="feed-container">
+        <!-- Story Tray -->
+        <div class="story-tray" role="list" aria-label="Stories">
+            <div class="story-item" role="listitem">
+                <div class="story-ring" aria-label="Story by story_user1, not seen">
+                    <div class="story-avatar">
+                        <div class="story-avatar-inner"></div>
+                    </div>
+                </div>
+                <span class="story-username">story_user1</span>
+            </div>
+            <div class="story-item" role="listitem">
+                <div class="story-ring" aria-label="Story by story_user2, not seen">
+                    <div class="story-avatar">
+                        <div class="story-avatar-inner"></div>
+                    </div>
+                </div>
+                <span class="story-username">story_user2</span>
+            </div>
+            <div class="story-item" role="listitem">
+                <div class="story-ring" aria-label="Story by story_user3, not seen">
+                    <div class="story-avatar">
+                        <div class="story-avatar-inner"></div>
+                    </div>
+                </div>
+                <span class="story-username">story_user3</span>
+            </div>
+        </div>
+
+        <!-- Image Post -->
+        <article class="post" role="article" data-testid="post">
+            <header class="post-header">
+                <div class="avatar"></div>
+                <a href="/example_user/" class="username">example_user</a>
+            </header>
+            <div class="post-image">
+                <img src="https://via.placeholder.com/470" alt="Example post image" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div class="post-actions">
+                <button class="action-btn" aria-label="Like">♡</button>
+                <button class="action-btn" aria-label="Comment">💬</button>
+                <button class="action-btn" aria-label="Share">➤</button>
+                <button class="action-btn" aria-label="Save" style="margin-left:auto;">🔖</button>
+            </div>
+            <div class="post-likes">1,234 likes</div>
+            <div class="post-caption">
+                <span class="username">example_user</span>
+                Example caption text for this post #example #test
+            </div>
+            <div class="comments-section">
+                <div class="comment"><span class="username">commenter1</span>Great post!</div>
+                <div class="comment"><span class="username">commenter2</span>Nice photo 📷</div>
+                <div class="comment"><span class="username">commenter3</span>Amazing!</div>
+            </div>
+            <time class="post-time">2 hours ago</time>
+        </article>
+
+        <!-- Carousel Post -->
+        <article class="post" role="article" data-testid="carousel-post">
+            <header class="post-header">
+                <div class="avatar"></div>
+                <a href="/carousel_user/" class="username">carousel_user</a>
+            </header>
+            <div class="carousel">
+                <div class="post-image">
+                    <img src="https://via.placeholder.com/470" alt="Carousel image 1 of 5" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div class="carousel-dots">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+            <div class="post-actions">
+                <button class="action-btn" aria-label="Like">♡</button>
+                <button class="action-btn" aria-label="Comment">💬</button>
+                <button class="action-btn" aria-label="Share">➤</button>
+                <button class="action-btn" aria-label="Save" style="margin-left:auto;">🔖</button>
+            </div>
+            <div class="post-likes">5,678 likes</div>
+            <div class="post-caption">
+                <span class="username">carousel_user</span>
+                This is a carousel post with multiple images #carousel #gallery
+            </div>
+            <time class="post-time">5 hours ago</time>
+        </article>
+
+        <!-- Video/Reel Post -->
+        <article class="post" role="article" data-testid="video-post">
+            <header class="post-header">
+                <div class="avatar"></div>
+                <a href="/video_creator/" class="username">video_creator</a>
+            </header>
+            <div class="post-image" style="position:relative;">
+                <video poster="https://via.placeholder.com/470" style="width:100%;height:100%;object-fit:cover;">
+                    <source src="https://example.com/sample-video.mp4" type="video/mp4">
+                </video>
+                <div class="video-indicator">
+                    <svg viewBox="0 0 24 24"><path d="M5.888 22.5a3.46 3.46 0 0 1-1.721-.46l-.003-.002a3.451 3.451 0 0 1-1.72-2.982V4.943a3.445 3.445 0 0 1 5.163-2.987l12.226 7.059a3.444 3.444 0 0 1-.001 5.967l-12.22 7.056a3.462 3.462 0 0 1-1.724.462Z"></path></svg>
+                </div>
+            </div>
+            <div class="post-actions">
+                <button class="action-btn" aria-label="Like">♡</button>
+                <button class="action-btn" aria-label="Comment">💬</button>
+                <button class="action-btn" aria-label="Share">➤</button>
+                <button class="action-btn" aria-label="Save" style="margin-left:auto;">🔖</button>
+            </div>
+            <div class="post-likes">10,234 likes</div>
+            <div class="post-caption">
+                <span class="username">video_creator</span>
+                Example video post for testing the extension #video #reel
+            </div>
+            <time class="post-time">1 day ago</time>
+        </article>
+    </div>
+
+    <!-- Mock React fiber data structure for extension testing -->
+    <script type="application/json" id="mock-instagram-data">
+    {
+        "config": {
+            "viewer": null
+        },
+        "posts": [
+            {
+                "id": "1000000000000000001",
+                "code": "ABC123example",
+                "shortcode": "ABC123example",
+                "media_type": 1,
+                "display_url": "https://via.placeholder.com/1080",
+                "thumbnail_url": "https://via.placeholder.com/470",
+                "user": {
+                    "username": "example_user",
+                    "full_name": "Example User",
+                    "pk": "1000000001",
+                    "profile_pic_url": "https://via.placeholder.com/150"
+                },
+                "like_count": 1234,
+                "comment_count": 56,
+                "caption": {
+                    "text": "Example caption text for this post #example #test"
+                },
+                "image_versions2": {
+                    "candidates": [
+                        {"url": "https://via.placeholder.com/1080", "width": 1080, "height": 1080},
+                        {"url": "https://via.placeholder.com/640", "width": 640, "height": 640},
+                        {"url": "https://via.placeholder.com/480", "width": 480, "height": 480}
+                    ]
+                }
+            },
+            {
+                "id": "1000000000000000002",
+                "code": "DEF456carousel",
+                "shortcode": "DEF456carousel",
+                "media_type": 8,
+                "carousel_media_count": 5,
+                "carousel_media": [
+                    {"id": "2001", "media_type": 1, "display_url": "https://via.placeholder.com/1080/1"},
+                    {"id": "2002", "media_type": 1, "display_url": "https://via.placeholder.com/1080/2"},
+                    {"id": "2003", "media_type": 1, "display_url": "https://via.placeholder.com/1080/3"},
+                    {"id": "2004", "media_type": 1, "display_url": "https://via.placeholder.com/1080/4"},
+                    {"id": "2005", "media_type": 1, "display_url": "https://via.placeholder.com/1080/5"}
+                ],
+                "user": {
+                    "username": "carousel_user",
+                    "full_name": "Carousel User",
+                    "pk": "1000000002",
+                    "profile_pic_url": "https://via.placeholder.com/150"
+                },
+                "like_count": 5678,
+                "comment_count": 123
+            },
+            {
+                "id": "1000000000000000003",
+                "code": "GHI789video",
+                "shortcode": "GHI789video",
+                "media_type": 2,
+                "video_url": "https://example.com/sample-video.mp4",
+                "video_versions": [
+                    {"url": "https://example.com/sample-video-hd.mp4", "width": 1080, "height": 1920, "type": 101},
+                    {"url": "https://example.com/sample-video-sd.mp4", "width": 480, "height": 854, "type": 102}
+                ],
+                "display_url": "https://via.placeholder.com/1080",
+                "user": {
+                    "username": "video_creator",
+                    "full_name": "Video Creator",
+                    "pk": "1000000003",
+                    "profile_pic_url": "https://via.placeholder.com/150"
+                },
+                "like_count": 10234,
+                "comment_count": 456
+            }
+        ],
+        "stories_tray": [
+            {"user": {"username": "story_user1", "pk": "2000000001", "profile_pic_url": "https://via.placeholder.com/150"}},
+            {"user": {"username": "story_user2", "pk": "2000000002", "profile_pic_url": "https://via.placeholder.com/150"}},
+            {"user": {"username": "story_user3", "pk": "2000000003", "profile_pic_url": "https://via.placeholder.com/150"}}
+        ]
+    }
+    </script>
+</body>
+</html>
+

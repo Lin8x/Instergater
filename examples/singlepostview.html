@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="_9dls _ar44" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>@example_account on Instagram: "Example post caption for testing"</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="1,000 Likes - Example Account (@example_account) on Instagram: Example post caption for testing the ZenBlocker extension">
+    <meta property="og:title" content="Example Account on Instagram: Example post caption">
+    <meta property="og:description" content="1,000 Likes - Example post for extension testing">
+    <meta property="og:type" content="video">
+    <meta property="og:url" content="https://www.instagram.com/p/EXAMPLE123/">
+    <meta property="og:image" content="https://via.placeholder.com/1080">
+    <style>
+        :root {
+            --ig-primary-background: 255, 255, 255;
+            --ig-primary-text: 38, 38, 38;
+            --ig-secondary-text: 142, 142, 142;
+            --ig-separator: 219, 219, 219;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 20px; background: #fafafa; }
+        .post-container { max-width: 935px; margin: 0 auto; display: flex; background: white; border: 1px solid #dbdbdb; border-radius: 3px; }
+        .media-section { flex: 1; max-width: 600px; background: black; display: flex; align-items: center; justify-content: center; }
+        .media-section img, .media-section video { max-width: 100%; max-height: 600px; }
+        .details-section { width: 335px; display: flex; flex-direction: column; border-left: 1px solid #dbdbdb; }
+        .post-header { display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid #dbdbdb; }
+        .avatar { width: 32px; height: 32px; border-radius: 50%; background: #dbdbdb; margin-right: 12px; }
+        .username { font-weight: 600; font-size: 14px; color: #262626; text-decoration: none; }
+        .comments-section { flex: 1; overflow-y: auto; padding: 16px; }
+        .caption { margin-bottom: 16px; }
+        .caption .username { margin-right: 4px; }
+        .comment { margin: 12px 0; font-size: 14px; }
+        .comment .username { font-weight: 600; margin-right: 4px; }
+        .post-actions { padding: 8px 16px; border-top: 1px solid #dbdbdb; display: flex; gap: 16px; }
+        .action-btn { background: none; border: none; cursor: pointer; padding: 8px 0; font-size: 24px; }
+        .likes-section { padding: 0 16px 8px; font-weight: 600; font-size: 14px; }
+        .time-section { padding: 0 16px 16px; font-size: 10px; color: #8e8e8e; text-transform: uppercase; }
+        .add-comment { padding: 16px; border-top: 1px solid #dbdbdb; display: flex; align-items: center; }
+        .add-comment input { flex: 1; border: none; outline: none; font-size: 14px; }
+        .add-comment button { background: none; border: none; color: #0095f6; font-weight: 600; cursor: pointer; }
+        /* Video controls overlay */
+        .video-overlay { position: relative; }
+        .play-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(0,0,0,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .play-button svg { width: 30px; height: 30px; fill: white; margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <article class="post-container" role="article">
+        <!-- Media Section -->
+        <div class="media-section">
+            <div class="video-overlay">
+                <video id="post-video" poster="https://via.placeholder.com/600x750" style="width:100%;height:auto;max-height:600px;">
+                    <source src="https://example.com/sample-reel.mp4" type="video/mp4">
+                </video>
+                <div class="play-button" onclick="document.getElementById('post-video').play()">
+                    <svg viewBox="0 0 24 24"><path d="M5.888 22.5a3.46 3.46 0 0 1-1.721-.46l-.003-.002a3.451 3.451 0 0 1-1.72-2.982V4.943a3.445 3.445 0 0 1 5.163-2.987l12.226 7.059a3.444 3.444 0 0 1-.001 5.967l-12.22 7.056a3.462 3.462 0 0 1-1.724.462Z"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details Section -->
+        <div class="details-section">
+            <header class="post-header">
+                <div class="avatar"></div>
+                <a href="/example_account/" class="username">example_account</a>
+            </header>
+
+            <div class="comments-section">
+                <div class="caption">
+                    <a href="/example_account/" class="username">example_account</a>
+                    <span>Example post caption for testing the ZenBlocker extension. This simulates a real Instagram post view. #example #testing #zenblockr</span>
+                </div>
+
+                <div class="comment">
+                    <a href="/test_commenter1/" class="username">test_commenter1</a>
+                    <span>This is a test comment!</span>
+                </div>
+                <div class="comment">
+                    <a href="/test_commenter2/" class="username">test_commenter2</a>
+                    <span>Another example comment 🎉</span>
+                </div>
+                <div class="comment">
+                    <a href="/test_commenter3/" class="username">test_commenter3</a>
+                    <span>Great content!</span>
+                </div>
+                <div class="comment">
+                    <a href="/test_commenter4/" class="username">test_commenter4</a>
+                    <span>Love this 💯</span>
+                </div>
+            </div>
+
+            <div class="post-actions">
+                <button class="action-btn" aria-label="Like">♡</button>
+                <button class="action-btn" aria-label="Comment">💬</button>
+                <button class="action-btn" aria-label="Share">➤</button>
+                <button class="action-btn" aria-label="Save" style="margin-left:auto;">🔖</button>
+            </div>
+
+            <div class="likes-section">1,000 likes</div>
+            <div class="time-section">January 1, 2025</div>
+
+            <div class="add-comment">
+                <input type="text" placeholder="Add a comment...">
+                <button>Post</button>
+            </div>
+        </div>
+    </article>
+
+    <!-- Mock React fiber data for extension testing (Single Post View) -->
+    <script type="application/json" id="mock-instagram-data">
+    {
+        "graphql": {
+            "shortcode_media": {
+                "id": "3000000000000000001",
+                "shortcode": "EXAMPLE123",
+                "__typename": "GraphVideo",
+                "is_video": true,
+                "video_url": "https://example.com/sample-reel.mp4",
+                "video_view_count": 50000,
+                "display_url": "https://via.placeholder.com/1080x1350",
+                "display_resources": [
+                    {"src": "https://via.placeholder.com/640x800", "config_width": 640, "config_height": 800},
+                    {"src": "https://via.placeholder.com/750x938", "config_width": 750, "config_height": 938},
+                    {"src": "https://via.placeholder.com/1080x1350", "config_width": 1080, "config_height": 1350}
+                ],
+                "owner": {
+                    "id": "3000000001",
+                    "username": "example_account",
+                    "full_name": "Example Account",
+                    "profile_pic_url": "https://via.placeholder.com/150",
+                    "is_verified": false
+                },
+                "edge_media_to_caption": {
+                    "edges": [
+                        {"node": {"text": "Example post caption for testing the ZenBlocker extension. #example #testing #zenblockr"}}
+                    ]
+                },
+                "edge_media_preview_like": {
+                    "count": 1000
+                },
+                "edge_media_to_comment": {
+                    "count": 45,
+                    "edges": [
+                        {"node": {"id": "c001", "text": "This is a test comment!", "owner": {"username": "test_commenter1"}}},
+                        {"node": {"id": "c002", "text": "Another example comment 🎉", "owner": {"username": "test_commenter2"}}},
+                        {"node": {"id": "c003", "text": "Great content!", "owner": {"username": "test_commenter3"}}},
+                        {"node": {"id": "c004", "text": "Love this 💯", "owner": {"username": "test_commenter4"}}}
+                    ]
+                },
+                "taken_at_timestamp": 1704067200
+            }
+        },
+        "media": {
+            "pk": "3000000000000000001",
+            "code": "EXAMPLE123",
+            "media_type": 2,
+            "video_versions": [
+                {"url": "https://example.com/sample-reel-hd.mp4", "width": 1080, "height": 1920, "type": 101},
+                {"url": "https://example.com/sample-reel-sd.mp4", "width": 480, "height": 854, "type": 102}
+            ],
+            "image_versions2": {
+                "candidates": [
+                    {"url": "https://via.placeholder.com/1080x1350", "width": 1080, "height": 1350}
+                ]
+            },
+            "user": {
+                "pk": "3000000001",
+                "username": "example_account",
+                "full_name": "Example Account"
+            }
+        }
+    }
+    </script>
+</body>
+</html>
+
+

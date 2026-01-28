@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Instergater",
+  "version": "1.0",
+  "description": "An AI-generated intervention for social media addiction. Reclaim your internal validation.",
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "*://www.instagram.com/*",
+    "*://*.cdninstagram.com/*",
+    "*://*.fbcdn.net/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "assets/logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.instagram.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["*://www.instagram.com/*"]
+    }
+  ]
+}

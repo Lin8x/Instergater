@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="_9dls _ar44" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Instagram Stories Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Example Instagram stories page for ZenBlocker extension testing">
+    <style>
+        :root {
+            --ig-primary-background: 0, 0, 0;
+            --ig-primary-text: 255, 255, 255;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #1a1a1a; color: white; min-height: 100vh; }
+        .stories-container { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .story-viewer { position: relative; width: 100%; max-width: 420px; height: 750px; background: #000; border-radius: 8px; overflow: hidden; }
+        .story-header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; padding: 16px; background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent); }
+        .progress-bars { display: flex; gap: 4px; margin-bottom: 12px; }
+        .progress-bar { flex: 1; height: 2px; background: rgba(255,255,255,0.35); border-radius: 1px; overflow: hidden; }
+        .progress-bar .fill { width: 100%; height: 100%; background: white; transform-origin: left; }
+        .progress-bar.active .fill { animation: progress 5s linear forwards; }
+        .progress-bar.complete .fill { transform: scaleX(1); }
+        .progress-bar.pending .fill { transform: scaleX(0); }
+        @keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        .user-info { display: flex; align-items: center; }
+        .avatar { width: 32px; height: 32px; border-radius: 50%; background: #dbdbdb; margin-right: 10px; }
+        .username { font-weight: 600; font-size: 14px; margin-right: 8px; }
+        .time-ago { font-size: 12px; color: rgba(255,255,255,0.6); }
+        .close-btn { position: absolute; top: 16px; right: 16px; background: none; border: none; color: white; font-size: 24px; cursor: pointer; z-index: 10; }
+        .story-content { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .story-content img, .story-content video { width: 100%; height: 100%; object-fit: cover; }
+        .story-footer { position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 16px; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); }
+        .reply-input { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 22px; padding: 8px 16px; }
+        .reply-input input { flex: 1; background: none; border: none; color: white; font-size: 14px; outline: none; }
+        .reply-input input::placeholder { color: rgba(255,255,255,0.6); }
+        .story-nav { position: absolute; top: 50%; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 8px; transform: translateY(-50%); }
+        .nav-btn { width: 44px; height: 44px; background: none; border: none; cursor: pointer; opacity: 0; }
+        .story-viewer:hover .nav-btn { opacity: 1; }
+        /* Story tray at bottom */
+        .story-tray { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; padding: 12px; background: rgba(0,0,0,0.8); border-radius: 12px; }
+        .tray-item { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); padding: 2px; cursor: pointer; }
+        .tray-item.active { box-shadow: 0 0 0 2px white; }
+        .tray-item-inner { width: 100%; height: 100%; border-radius: 50%; background: #333; border: 2px solid #1a1a1a; }
+    </style>
+</head>
+<body>
+    <div class="stories-container">
+        <div class="story-viewer" role="dialog" aria-label="Story viewer">
+            <!-- Header -->
+            <div class="story-header">
+                <div class="progress-bars">
+                    <div class="progress-bar complete"><div class="fill"></div></div>
+                    <div class="progress-bar active"><div class="fill"></div></div>
+                    <div class="progress-bar pending"><div class="fill"></div></div>
+                </div>
+                <div class="user-info">
+                    <div class="avatar"></div>
+                    <span class="username">example_user</span>
+                    <span class="time-ago">2h</span>
+                </div>
+            </div>
+
+            <button class="close-btn" aria-label="Close">✕</button>
+
+            <!-- Story Content -->
+            <div class="story-content">
+                <img src="https://via.placeholder.com/420x750" alt="Story content">
+            </div>
+
+            <!-- Navigation -->
+            <div class="story-nav">
+                <button class="nav-btn" aria-label="Previous story"></button>
+                <button class="nav-btn" aria-label="Next story"></button>
+            </div>
+
+            <!-- Footer -->
+            <div class="story-footer">
+                <div class="reply-input">
+                    <input type="text" placeholder="Send message">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Story Tray -->
+    <div class="story-tray">
+        <div class="tray-item active" aria-label="example_user's story">
+            <div class="tray-item-inner"></div>
+        </div>
+        <div class="tray-item" aria-label="story_friend1's story">
+            <div class="tray-item-inner"></div>
+        </div>
+        <div class="tray-item" aria-label="story_friend2's story">
+            <div class="tray-item-inner"></div>
+        </div>
+        <div class="tray-item" aria-label="story_friend3's story">
+            <div class="tray-item-inner"></div>
+        </div>
+    </div>
+
+    <!-- Mock React fiber data for extension testing (Stories View) -->
+    <script type="application/json" id="mock-instagram-data">
+    {
+        "reels_tray": [
+            {
+                "id": "4000000001",
+                "user": {
+                    "pk": "4000000001",
+                    "username": "example_user",
+                    "full_name": "Example User",
+                    "profile_pic_url": "https://via.placeholder.com/150"
+                },
+                "items": [
+                    {
+                        "id": "s001",
+                        "media_type": 1,
+                        "image_versions2": {
+                            "candidates": [
+                                {"url": "https://via.placeholder.com/1080x1920", "width": 1080, "height": 1920}
+                            ]
+                        },
+                        "taken_at": 1704060000
+                    },
+                    {
+                        "id": "s002",
+                        "media_type": 1,
+                        "image_versions2": {
+                            "candidates": [
+                                {"url": "https://via.placeholder.com/1080x1920", "width": 1080, "height": 1920}
+                            ]
+                        },
+                        "taken_at": 1704063600
+                    },
+                    {
+                        "id": "s003",
+                        "media_type": 2,
+                        "video_versions": [
+                            {"url": "https://example.com/story-video.mp4", "width": 1080, "height": 1920, "type": 101}
+                        ],
+                        "taken_at": 1704067200
+                    }
+                ]
+            },
+            {
+                "id": "4000000002",
+                "user": {
+                    "pk": "4000000002",
+                    "username": "story_friend1",
+                    "full_name": "Story Friend One",
+                    "profile_pic_url": "https://via.placeholder.com/150"
+                },
+                "items": [
+                    {"id": "sf1_001", "media_type": 1}
+                ]
+            },
+            {
+                "id": "4000000003",
+                "user": {
+                    "pk": "4000000003",
+                    "username": "story_friend2",
+                    "full_name": "Story Friend Two",
+                    "profile_pic_url": "https://via.placeholder.com/150"
+                },
+                "items": [
+                    {"id": "sf2_001", "media_type": 1}
+                ]
+            },
+            {
+                "id": "4000000004",
+                "user": {
+                    "pk": "4000000004",
+                    "username": "story_friend3",
+                    "full_name": "Story Friend Three",
+                    "profile_pic_url": "https://via.placeholder.com/150"
+                },
+                "items": [
+                    {"id": "sf3_001", "media_type": 2}
+                ]
+            }
+        ]
+    }
+    </script>
+</body>
+</html>
+
+

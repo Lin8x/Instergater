@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body { width: 320px; }
+    .app-banner { width: 100%; height: auto; display: block; margin-bottom: 10px; border-radius: 4px; }
+    h2 { margin-top: 5px; }
+    
+    /* Tabs */
+    .tabs { display: flex; margin-bottom: 15px; border-bottom: 1px solid #ddd; }
+    .tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; background: #fafafa; border-bottom: 2px solid transparent; }
+    .tab.active { border-bottom: 2px solid #c13584; font-weight: bold; background: #fff; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    
+    textarea { width: 100%; height: 60px; box-sizing: border-box; resize: vertical; margin-top: 5px; font-family: monospace; font-size: 11px; }
+    .selector-group { margin-bottom: 15px; }
+    .selector-label { font-weight: bold; font-size: 0.9em; display: block; }
+    .selector-note { font-size: 0.8em; color: #666; margin-bottom: 5px; }
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <!-- Replace this SVG with your own 'banner.png' or 'banner.jpg' if desired -->
+    <img src="assets/logo-banner-colored.png" alt="Instergater Banner" class="app-banner">
+  </div>
+  <h2 style="margin-bottom: 0;">Instergater</h2>
+  <div style="text-align: center; color: #888; margin-bottom: 15px; font-size: 0.8em;">
+    <span id="versionDisplay">v1.0</span>
+  </div>
+
+  <div id="update-container" class="update-notice" style="display:none; margin: 0 10px 15px 10px;"></div>
+  
+  <div class="tabs">
+    <div class="tab active" data-tab="main">General</div>
+    <div class="tab" data-tab="advanced">Advanced</div>
+  </div>
+
+  <div id="main" class="tab-content active">
+  
+  <div class="section">
+    <div class="section-title">Addiction Control</div>
+    <label>
+      <input type="checkbox" id="enableDelay">
+      Block feed for <input type="number" id="blockFeedDuration" placeholder="3" min="1" max="60" style="width: 40px; margin: 0 5px;"> seconds on load
+    </label>
+    <label>
+      <input type="checkbox" id="enableScrollLimit">
+      Limit scrolling
+    </label>
+    <input type="number" id="maxPosts" placeholder="Max posts (e.g. 20)">
+    <input type="number" id="resetInterval" placeholder="Reset posts every X hours (e.g. 1)" min="0.1" step="0.1">
+  </div>
+
+  <div class="section">
+    <div class="section-title">Content Blocking</div>
+    <label>
+      <input type="checkbox" id="enableKeywordBlock">
+      Block posts by keyword
+    </label>
+    <input type="text" id="keywords" placeholder="influencer, ad, viral (comma sep)">
+  </div>
+
+  <div class="section">
+    <div class="section-title">Minimalist UI</div>
+    <label><input type="checkbox" id="hideLikes"> Hide Like Counts/Buttons</label>
+    <label><input type="checkbox" id="hideShare"> Hide Share Button</label>
+    <label><input type="checkbox" id="hideComments"> Hide Comments</label>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Utilities</div>
+    <label>
+      <input type="checkbox" id="enableDownload">
+      Enable Media Download
+    </label>
+    <label>
+      <input type="checkbox" id="enableStatusCheck">
+      Show "Running" notification
+    </label>
+    <label>
+      <input type="checkbox" id="disableUpdateCheck">
+      Disable update notifications
+    </label>
+  </div> <!-- End of Main Tab -->
+
+  <div id="advanced" class="tab-content">
+    <div class="section">
+        <div class="section-title">Custom Selectors</div>
+        <p class="selector-note">Override default CSS selectors. Leave blank to use defaults. Separate multiple selectors with commas.</p>
+        
+        <div class="selector-group">
+            <span class="selector-label">Post Container (Article)</span>
+            <textarea id="selectorPost" placeholder="article, main[role='main']"></textarea>
+        </div>
+
+        <div class="selector-group">
+            <span class="selector-label">Like Button (SVG)</span>
+            <textarea id="selectorLike" placeholder='svg[aria-label="Like"]'></textarea>
+        </div>
+
+        <div class="selector-group">
+            <span class="selector-label">Share Button (SVG)</span>
+            <textarea id="selectorShare" placeholder='svg[aria-label="Share Post"]'></textarea>
+        </div>
+
+        <div class="selector-group">
+            <span class="selector-label">Comment Button (SVG)</span>
+            <textarea id="selectorComment" placeholder='svg[aria-label="Comment"]'></textarea>
+        </div>
+    </div>
+  </div>
+
+  <div class="status" id="status"></div>
+  
+  <button id="resetCounter" style="background-color: #e0e0e0; color: black; margin-bottom: 8px;">Reset Post Counter</button>
+  <button id="resetDefaults" style="background-color: #ffcccc; color: #cc0000; margin-bottom: 8px;">Reset To Defaults</button>
+  <button id="save">Save Settings</button>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
