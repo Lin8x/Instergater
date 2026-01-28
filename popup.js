@@ -13,29 +13,49 @@ document.addEventListener('DOMContentLoaded', () => {
         hideLikes: document.getElementById('hideLikes'),
         hideShare: document.getElementById('hideShare'),
         hideComments: document.getElementById('hideComments'),
+        hideReels: document.getElementById('hideReels'),
+        hideSave: document.getElementById('hideSave'),
+        hideMoreOptions: document.getElementById('hideMoreOptions'),
+        hideExplore: document.getElementById('hideExplore'),
+        hideExplorer: document.getElementById('hideExplorer'),
+        hideNotifications: document.getElementById('hideNotifications'),
+        hideMessages: document.getElementById('hideMessages'),
+        hideMoreNav: document.getElementById('hideMoreNav'),
         enableDownload: document.getElementById('enableDownload'),
         enableStatusCheck: document.getElementById('enableStatusCheck'),
         disableUpdateCheck: document.getElementById('disableUpdateCheck'),
+        blockVideoTabs: document.getElementById('blockVideoTabs'),
         // Advanced Selectors
         selectorPost: document.getElementById('selectorPost'),
         selectorLike: document.getElementById('selectorLike'),
         selectorShare: document.getElementById('selectorShare'),
-        selectorComment: document.getElementById('selectorComment')
+        selectorComment: document.getElementById('selectorComment'),
+        selectorSave: document.getElementById('selectorSave'),
+        selectorMore: document.getElementById('selectorMore'),
+        selectorReelsNav: document.getElementById('selectorReelsNav'),
+        selectorExploreNav: document.getElementById('selectorExploreNav'),
+        selectorExplorerNav: document.getElementById('selectorExplorerNav'),
+        selectorNotificationsNav: document.getElementById('selectorNotificationsNav'),
+        selectorMessagesNav: document.getElementById('selectorMessagesNav'),
+        selectorMoreNav: document.getElementById('selectorMoreNav'),
+        customHideSelectors: document.getElementById('customHideSelectors')
     };
 
-    // Tabs Logic
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Deactivate all
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
-            // Activate clicked
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
+    // Advanced Toggle Logic
+    const toggleAdvancedBtn = document.getElementById('toggleAdvanced');
+    const advancedPanel = document.getElementById('advanced');
+    if (toggleAdvancedBtn && advancedPanel) {
+        const setState = (open) => {
+            advancedPanel.style.display = open ? 'block' : 'none';
+            toggleAdvancedBtn.textContent = open ? 'Hide Advanced Options' : 'Show Advanced Options';
+            toggleAdvancedBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        };
+        setState(false);
+        toggleAdvancedBtn.addEventListener('click', () => {
+            const open = advancedPanel.style.display === 'none' || advancedPanel.style.display === '' ? true : false;
+            setState(open);
         });
-    });
+    }
 
     // Display current version
     const currentVersion = chrome.runtime.getManifest().version;
@@ -97,13 +117,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     hideLikes: true,
                     hideShare: true,
                     hideComments: true,
+                    hideReels: false,
+                    hideSave: false,
+                    hideMoreOptions: false,
+                    hideExplore: false,
+                    hideExplorer: false,
+                    hideNotifications: false,
+                    hideMessages: false,
+                    hideMoreNav: false,
                     enableDownload: true,
                     enableStatusCheck: true,
                     disableUpdateCheck: false,
+                    blockVideoTabs: false,
                     selectorPost: '',
                     selectorLike: '',
                     selectorShare: '',
-                    selectorComment: ''
+                    selectorComment: '',
+                    selectorSave: '',
+                    selectorMore: '',
+                    selectorReelsNav: '',
+                    selectorExploreNav: '',
+                    selectorExplorerNav: '',
+                    selectorNotificationsNav: '',
+                    selectorMessagesNav: '',
+                    selectorMoreNav: '',
+                    customHideSelectors: ''
                 };
                 
                 // Update UI immediately

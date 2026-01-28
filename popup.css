@@ -1,5 +1,7 @@
 body {
   width: 300px;
+  max-height: 600px;
+  overflow-y: auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 15px;
   background-color: #f8f9fa;

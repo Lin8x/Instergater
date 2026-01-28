@@ -2,6 +2,21 @@
 (() => {
     'use strict';
 
+    let bgSettings = {};
+
+    // Load settings initially and keep in sync
+    chrome.storage.sync.get(null, (data) => {
+        bgSettings = data || {};
+    });
+
+    chrome.storage.onChanged.addListener((changes, area) => {
+        if (area === 'sync') {
+            Object.keys(changes).forEach(key => {
+                bgSettings[key] = changes[key].newValue;
+            });
+        }
+    });
+
     chrome.runtime.onInstalled.addListener(() => {
         console.log('Instagram Zen Installed');
     });
@@ -83,6 +98,28 @@
             
             // Return true to indicate async response
             return true; 
+        }
+    });
+
+    function isInstagramVideoUrl(url) {
+        try {
+            const u = new URL(url);
+            const isInstagram = /(^|\.)instagram\.com$/.test(u.hostname);
+            const path = u.pathname || '';
+            const looksLikePostOrReel = /\/(p|reel|reels)\//.test(path);
+            return isInstagram && looksLikePostOrReel;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    // Close tabs opened by video clicks when enabled
+    chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+        if (!bgSettings.blockVideoTabs) return;
+        if (!changeInfo.url) return;
+        // Only act on tabs that were opened from another tab (e.g., via click)
+        if (tab && tab.openerTabId && isInstagramVideoUrl(changeInfo.url)) {
+            chrome.tabs.remove(tabId);
         }
     });
 })();

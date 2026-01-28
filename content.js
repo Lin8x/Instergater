@@ -660,6 +660,51 @@ function showDelayOverlay() {
             handleStoriesView();
             return;
         }
+
+        // Global UI Hides
+        applyNavHide('hideReels', 'selectorReelsNav', [
+            'a[href*="/reels"]',
+            'a[href*="/reel"]',
+            'a[aria-label="Reels"]',
+            'svg[aria-label="Reels"]',
+            'div[role="tab"][aria-label*="Reels"]'
+        ]);
+
+        applyNavHide('hideExplore', 'selectorExploreNav', [
+            'a[aria-label="Explore"]',
+            'a[href="/explore/"]',
+            'svg[aria-label="Explore"]'
+        ]);
+
+        applyNavHide('hideExplorer', 'selectorExplorerNav', [
+            'a[aria-label="Search"]',
+            'button[aria-label="Search"]',
+            'svg[aria-label="Search"]'
+        ]);
+
+        applyNavHide('hideNotifications', 'selectorNotificationsNav', [
+            'a[aria-label="Notifications"]',
+            'a[href="/accounts/activity/"]',
+            'svg[aria-label="Notifications"]'
+        ]);
+
+        applyNavHide('hideMessages', 'selectorMessagesNav', [
+            'a[aria-label*="Message"]',
+            'a[href="/direct/inbox/"]',
+            'svg[aria-label*="Messenger"]',
+            'svg[aria-label*="Direct"]'
+        ]);
+
+        applyNavHide('hideMoreNav', 'selectorMoreNav', [
+            'button[aria-label="More"]',
+            'svg[aria-label="More"]',
+            'div[aria-label="More"]',
+            'div[role="button"][aria-label="More"]'
+        ]);
+
+        if (settings.customHideSelectors && settings.customHideSelectors.trim()) {
+            hideCustomSelectors(settings.customHideSelectors);
+        }
         
         // Select all potential post articles
         // Refined selector to avoid grabbing the entire feed container 'main'
@@ -786,6 +831,32 @@ function showDelayOverlay() {
                 if(commentForm) commentForm.style.display = 'none';
             }
 
+            if (settings.hideSave) {
+                const defaultSaveSelector = 'svg[aria-label="Save"], svg[aria-label="Remove"]';
+                const saveSelector = (settings.selectorSave && settings.selectorSave.trim()) 
+                                    ? settings.selectorSave 
+                                    : defaultSaveSelector;
+
+                const saveSvg = article.querySelector(saveSelector);
+                if (saveSvg) {
+                    const btn = saveSvg.closest('[role="button"]') || saveSvg.closest('button');
+                    if (btn) btn.style.display = 'none';
+                }
+            }
+
+            if (settings.hideMoreOptions) {
+                const defaultMoreSelector = 'svg[aria-label="More options"]';
+                const moreSelector = (settings.selectorMore && settings.selectorMore.trim()) 
+                                    ? settings.selectorMore 
+                                    : defaultMoreSelector;
+
+                const moreSvg = article.querySelector(moreSelector);
+                if (moreSvg) {
+                    const btn = moreSvg.closest('[role="button"]') || moreSvg.closest('button');
+                    if (btn) btn.style.display = 'none';
+                }
+            }
+
             // 3. Media Download
             if (settings.enableDownload) {
                 addDownloadButton(article);
@@ -801,6 +872,42 @@ function showDelayOverlay() {
         if(settings.enableScrollLimit) {
             checkScrollLimit();
         }
+    }
+
+    // Hide Reels button/tab in navigation
+    function applyNavHide(settingKey, selectorKey, defaultSelectors) {
+        if (!settings[settingKey]) return;
+
+        const selectors = buildSelectorList(settings[selectorKey], defaultSelectors);
+        selectors.forEach(sel => {
+            try {
+                const nodes = document.querySelectorAll(sel);
+                nodes.forEach(node => {
+                    const container = node.closest('a') || node.closest('button') || node.closest('[role="button"]') || node.closest('[role="link"]') || node.closest('li') || node;
+                    if (container) container.style.display = 'none';
+                });
+            } catch (e) {
+                console.warn(`ZenBlocker: Invalid selector for ${settingKey}:`, sel, e.message);
+            }
+        });
+    }
+
+    function buildSelectorList(customValue, defaults) {
+        if (customValue && typeof customValue === 'string' && customValue.trim()) {
+            return customValue.split(',').map(s => s.trim()).filter(Boolean);
+        }
+        return defaults;
+    }
+
+    function hideCustomSelectors(list) {
+        const selectors = list.split(',').map(s => s.trim()).filter(Boolean);
+        selectors.forEach(sel => {
+            try {
+                document.querySelectorAll(sel).forEach(el => { el.style.display = 'none'; });
+            } catch (e) {
+                console.warn('ZenBlocker: Invalid custom hide selector:', sel, e.message);
+            }
+        });
     }
 
     function checkScrollLimit() {

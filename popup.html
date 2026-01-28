@@ -7,12 +7,8 @@
     .app-banner { width: 100%; height: auto; display: block; margin-bottom: 10px; border-radius: 4px; }
     h2 { margin-top: 5px; }
     
-    /* Tabs */
-    .tabs { display: flex; margin-bottom: 15px; border-bottom: 1px solid #ddd; }
-    .tab { flex: 1; padding: 10px; text-align: center; cursor: pointer; background: #fafafa; border-bottom: 2px solid transparent; }
-    .tab.active { border-bottom: 2px solid #c13584; font-weight: bold; background: #fff; }
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
+    /* Advanced toggle (inline styles kept simple) */
+    #toggleAdvanced { display: inline-block; margin: 8px 10px; padding: 6px 10px; font-size: 12px; border: 1px solid #ddd; border-radius: 4px; background: #fafafa; cursor: pointer; }
     
     textarea { width: 100%; height: 60px; box-sizing: border-box; resize: vertical; margin-top: 5px; font-family: monospace; font-size: 11px; }
     .selector-group { margin-bottom: 15px; }
@@ -27,17 +23,14 @@
   </div>
   <h2 style="margin-bottom: 0;">Instergater</h2>
   <div style="text-align: center; color: #888; margin-bottom: 15px; font-size: 0.8em;">
-    <span id="versionDisplay">v1.0</span>
+    <span id="versionDisplay">v1.1</span>
   </div>
 
   <div id="update-container" class="update-notice" style="display:none; margin: 0 10px 15px 10px;"></div>
   
-  <div class="tabs">
-    <div class="tab active" data-tab="main">General</div>
-    <div class="tab" data-tab="advanced">Advanced</div>
-  </div>
+  <button id="toggleAdvanced" aria-expanded="false">Show Advanced Options</button>
 
-  <div id="main" class="tab-content active">
+  <div id="main">
   
   <div class="section">
     <div class="section-title">Addiction Control</div>
@@ -67,6 +60,14 @@
     <label><input type="checkbox" id="hideLikes"> Hide Like Counts/Buttons</label>
     <label><input type="checkbox" id="hideShare"> Hide Share Button</label>
     <label><input type="checkbox" id="hideComments"> Hide Comments</label>
+    <label><input type="checkbox" id="hideReels"> Hide Reels Button</label>
+    <label><input type="checkbox" id="hideSave"> Hide Save Button</label>
+    <label><input type="checkbox" id="hideMoreOptions"> Hide More Options</label>
+    <label><input type="checkbox" id="hideExplore"> Hide Explore Button</label>
+    <label><input type="checkbox" id="hideExplorer"> Hide Explorer Button</label>
+    <label><input type="checkbox" id="hideNotifications"> Hide Notifications Button</label>
+    <label><input type="checkbox" id="hideMessages"> Hide Messages Button</label>
+    <label><input type="checkbox" id="hideMoreNav"> Hide More Button</label>
   </div>
 
   <div class="section">
@@ -83,9 +84,13 @@
       <input type="checkbox" id="disableUpdateCheck">
       Disable update notifications
     </label>
+    <label>
+      <input type="checkbox" id="blockVideoTabs">
+      Close tabs opened by video clicks
+    </label>
   </div> <!-- End of Main Tab -->
 
-  <div id="advanced" class="tab-content">
+  <div id="advanced" style="display:none">
     <div class="section">
         <div class="section-title">Custom Selectors</div>
         <p class="selector-note">Override default CSS selectors. Leave blank to use defaults. Separate multiple selectors with commas.</p>
@@ -109,6 +114,51 @@
             <span class="selector-label">Comment Button (SVG)</span>
             <textarea id="selectorComment" placeholder='svg[aria-label="Comment"]'></textarea>
         </div>
+
+      <div class="selector-group">
+        <span class="selector-label">Save Button (SVG)</span>
+        <textarea id="selectorSave" placeholder='svg[aria-label="Save"], svg[aria-label="Remove"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">More Options (SVG)</span>
+        <textarea id="selectorMore" placeholder='svg[aria-label="More options"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">Reels Nav (Link/SVG)</span>
+        <textarea id="selectorReelsNav" placeholder='a[href*="/reels"], a[aria-label="Reels"], svg[aria-label="Reels"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">Explore Nav (Link/SVG)</span>
+        <textarea id="selectorExploreNav" placeholder='a[aria-label="Explore"], svg[aria-label="Explore"], a[href="/explore/"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">Explorer Nav (Link/SVG)</span>
+        <textarea id="selectorExplorerNav" placeholder='a[aria-label*="Explore"], svg[aria-label*="Explore"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">Notifications Nav (Link/SVG)</span>
+        <textarea id="selectorNotificationsNav" placeholder='a[aria-label="Notifications"], svg[aria-label="Notifications"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">Messages Nav (Link/SVG)</span>
+        <textarea id="selectorMessagesNav" placeholder='a[aria-label*="Message"], svg[aria-label*="Messenger"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">More Nav (Link/SVG)</span>
+        <textarea id="selectorMoreNav" placeholder='button[aria-label="More"], svg[aria-label="More"]'></textarea>
+      </div>
+
+      <div class="selector-group">
+        <span class="selector-label">Custom Hide Selectors (Global)</span>
+        <textarea id="customHideSelectors" placeholder='Enter CSS selectors to hide, comma-separated'></textarea>
+      </div>
     </div>
   </div>
 
