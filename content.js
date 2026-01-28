@@ -113,10 +113,20 @@ function showDelayOverlay() {
     const duration = parseInt(settings.blockFeedDuration) || 3;
     const overlay = document.createElement('div');
     overlay.id = 'zen-delay-overlay';
-    overlay.innerHTML = `
-        <h1>Take a breath</h1>
-        <p>Opening Instagram in <span id="zen-countdown">${duration}</span>...</p>
-    `;
+    
+    const h1 = document.createElement('h1');
+    h1.textContent = 'Take a breath';
+    overlay.appendChild(h1);
+    
+    const p = document.createElement('p');
+    p.textContent = 'Opening Instagram in ';
+    const span = document.createElement('span');
+    span.id = 'zen-countdown';
+    span.textContent = duration;
+    p.appendChild(span);
+    p.appendChild(document.createTextNode('...'));
+    overlay.appendChild(p);
+    
     document.body.appendChild(overlay);
 
     let count = duration;
@@ -451,9 +461,12 @@ function showDelayOverlay() {
                 header.style.cssText = 'padding: 8px 12px; font-weight: bold; border-bottom: 1px solid #efefef; background: #fafafa;';
                 
                 if (downloadable.length > 0) {
-                    header.innerText = `Found ${downloadable.length} item(s)`;
+                    header.textContent = `Found ${downloadable.length} item(s)`;
                 } else if (blobs.length > 0) {
-                    header.innerHTML = `<span style="color: #ed4956;">⚠️ ${blobs.length} protected video(s)</span>`;
+                    const warnSpan = document.createElement('span');
+                    warnSpan.style.color = '#ed4956';
+                    warnSpan.textContent = `⚠️ ${blobs.length} protected video(s)`;
+                    header.appendChild(warnSpan);
                 }
                 dropdown.appendChild(header);
                 
@@ -955,10 +968,15 @@ function showDelayOverlay() {
                     
                     const timeMsg = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
 
-                    warning.innerHTML = `
-                        <div>You've reached your limit (${max} posts)!</div>
-                        <div style="font-size: 0.8em; opacity: 0.9; margin-top: 5px;">Reset in: ${timeMsg}</div>
-                    `;
+                    warning.textContent = '';
+                    const msgDiv = document.createElement('div');
+                    msgDiv.textContent = `You've reached your limit (${max} posts)!`;
+                    warning.appendChild(msgDiv);
+                    
+                    const resetDiv = document.createElement('div');
+                    resetDiv.style.cssText = 'font-size: 0.8em; opacity: 0.9; margin-top: 5px;';
+                    resetDiv.textContent = `Reset in: ${timeMsg}`;
+                    warning.appendChild(resetDiv);
                 });
                 
                 document.body.appendChild(warning);
@@ -1170,9 +1188,14 @@ function showDelayOverlay() {
                          
                          // Show warning if in Feed View with videos/blobs
                          if (!isInSingleView && (hasVideos || hasBlobs)) {
-                             header.innerHTML = `<span style="color:#ed4956;">⚠️ Limited (Feed View)</span>`;
+                             const warnSpan = document.createElement('span');
+                             warnSpan.style.color = '#ed4956';
+                             warnSpan.textContent = '⚠️ Limited (Feed View)';
+                             header.appendChild(warnSpan);
                          } else {
-                             header.innerHTML = `<span>Found ${resources.length}</span>`;
+                             const infoSpan = document.createElement('span');
+                             infoSpan.textContent = `Found ${resources.length}`;
+                             header.appendChild(infoSpan);
                          }
                          
                          dropdown.appendChild(header);

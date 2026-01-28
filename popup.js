@@ -252,12 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('update-container');
         if (container) {
             container.style.display = 'block';
-            container.innerHTML = `
-                <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 13px; border: 1px solid #ffeeba;">
-                    <strong>Update Available (v${version})</strong><br>
-                    <a href="${url}" target="_blank" style="color: #533f03; text-decoration: underline;">View on GitHub</a>
-                </div>
-            `;
+            container.textContent = '';
+            
+            const wrapper = document.createElement('div');
+            wrapper.style.cssText = 'background: #fff3cd; color: #856404; padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 13px; border: 1px solid #ffeeba;';
+            
+            const strong = document.createElement('strong');
+            strong.textContent = `Update Available (v${version})`;
+            wrapper.appendChild(strong);
+            
+            wrapper.appendChild(document.createElement('br'));
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank';
+            link.style.cssText = 'color: #533f03; text-decoration: underline;';
+            link.textContent = 'View on GitHub';
+            wrapper.appendChild(link);
+            
+            container.appendChild(wrapper);
         }
     }
 });

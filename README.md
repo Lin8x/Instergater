@@ -19,7 +19,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.2-blue.svg?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.3-blue.svg?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-hiatus-orange.svg?style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/Lin8x/Instergater?style=for-the-badge)
 ![Contributors](https://img.shields.io/github/contributors/Lin8x/Instergater?style=for-the-badge)
