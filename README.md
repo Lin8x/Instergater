@@ -19,10 +19,11 @@
 <div align="center">
 
 ![Version](https://img.shields.io/badge/version-1.0-blue.svg?style=for-the-badge)
-![Status](https://img.shields.io/badge/status-active-success.svg?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/:lin8x/:instergater?style=for-the-badge)
-![License](https://img.shields.io/github/license/:lin8x/:instergater?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-hiatus-orange.svg?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/Lin8x/Instergater?style=for-the-badge)
+![Contributors](https://img.shields.io/github/contributors/Lin8x/Instergater?style=for-the-badge)
 ![Made with JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-yellow?style=for-the-badge&logo=javascript)
+
 
 </div>
 
@@ -77,11 +78,16 @@ This project is fully open source. The code is unminified and available for you 
 ## 🚀 Installation
 
 ### Option 1: Official Store (Recommended)
+
+![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-4285F4?logo=chromewebstore&logoColor=white)
+![Firefox Add-Ons](https://img.shields.io/badge/Firefox_Add_Ons-20123A?logo=firefoxbrowser&logoColor=white)
+
 | Browser | Link |
 | :--- | :--- |
-| **🟢 Chrome** | [Download from Chrome Web Store](#) *(Coming Soon)* |
-| **🔵 Edge** | [Download from Edge Add-ons](#) *(Coming Soon)* |
-| **🦊 Firefox** | [Download from Firefox Add-ons](#) *(Coming Soon)* |
+| ![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?logo=GoogleChrome&logoColor=white) | [Download from Chrome Web Store](#) *(Coming Soon)* |
+| ![Microsoft Edge](https://custom-icon-badges.demolab.com/badge/Microsoft%20Edge-2771D8?logo=edge-white&logoColor=white) | [Download from Edge Add-ons](#) *(Coming Soon)* |
+| ![Firefox](https://img.shields.io/badge/Firefox-FF7139?logo=firefoxbrowser&logoColor=white) | [Download from Firefox Add-ons](#) *(Coming Soon)* |
+</br>
 
 </br>
 
