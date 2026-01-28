@@ -12,6 +12,7 @@
 
 <p align="center" width="100%">
  Your Gate-Keeping Instagram Extension 
+</br>(Not affiliated with, endorsed by, or sponsored by Instagram or Meta)
 </p>
 
 </br>
@@ -144,5 +145,6 @@ Check the [**Issues**](../../issues) tab to see if it's already been reported. I
 *   [CONTRIBUTING](./CONTRIBUTING.md)
 *   [SECURITY](./SECURITY.md)
 *   [LICENSE](./LICENSE.md)
+
 
 </br>
