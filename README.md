@@ -96,7 +96,7 @@ This project is fully open source. The code is unminified and available for you 
 | :--- | :--- |
 | ![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?logo=GoogleChrome&logoColor=white) | [Download from Chrome Web Store](#) *(Coming Soon)* |
 | ![Microsoft Edge](https://custom-icon-badges.demolab.com/badge/Microsoft%20Edge-2771D8?logo=edge-white&logoColor=white) | [Download from Edge Add-ons](#) *(Coming Soon)* |
-| ![Firefox](https://img.shields.io/badge/Firefox-FF7139?logo=firefoxbrowser&logoColor=white) | [Download from Firefox Add-ons](#) *(Coming Soon)* |
+| ![Firefox](https://img.shields.io/badge/Firefox-FF7139?logo=firefoxbrowser&logoColor=white) | [Download from Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/instergater/) |
 </br>
 
 </br>
@@ -164,5 +164,6 @@ Check the [**Issues**](../../issues) tab to see if it's already been reported. I
 
 
 </br>
+
 
 
